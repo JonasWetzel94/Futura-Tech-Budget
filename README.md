@@ -136,3 +136,25 @@ Futura Tech Inc. (US-based, AI drones) evaluates building a manufacturing facili
 - **Depreciation grid** via `SUMPRODUCT` over capex vintages:
   ```excel
   =SUMPRODUCT(capex_range / life, --(col_year >= (row_vintage+1)))
+
+## Debt schedule with built-ins:
+Payment_t := PMT(rate, 10, -80)
+Interest_t := IPMT(rate, t, 10, -80)
+Principal_t := PPMT(rate, t, 10, -80)
+
+## Working Capital
+  ```excel
+  =Revenue_t * ((DSO_t + DIO_t - DPO_t) / 365)
+  =NWC_t - NWC_(t-1)   // ΔWC
+```
+## OCF & IRR:
+  ```excel
+  OCF_t := EBITDA_t - Tax_t - DeltaNWC_t - Capex_t
+  =IRR(OCF_range)
+```
+## Quick Skills Snapshot
+- Driver-based financial modeling (PP&E, WC, debt, taxes)
+- Cash flow modeling & valuation (IRR, residual value, decision criteria)
+- Excel modeling: PMT/IPMT/PPMT, SUMPRODUCT, named ranges, audit checks
+- Statement linkage (P&L ↔ cash flow ↔ schedules) with roll-forward integrity
+- Clear documentation and recruiter-ready presentation of results
